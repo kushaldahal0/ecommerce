@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'oscar.apps.checkout.apps.CheckoutConfig',
     'oscar.apps.address.apps.AddressConfig',
     'oscar.apps.shipping.apps.ShippingConfig',
-    'oscar.apps.catalogue.apps.CatalogueConfig',
+    # 'oscar.apps.catalogue.apps.CatalogueConfig',
+    
     'oscar.apps.catalogue.reviews.apps.CatalogueReviewsConfig',
     'oscar.apps.communication.apps.CommunicationConfig',
     'oscar.apps.partner.apps.PartnerConfig',
@@ -76,12 +77,21 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'haystack',
     'treebeard',
-    # 'sorl.thumbnail',   # Default thumbnail backend, can be replaced
+    'sorl.thumbnail',   # Default thumbnail backend, can be replaced
     'django_tables2',
+
+    #custom modules replacing the default
+    'eKShop.catalogue.apps.CatalogueConfig',
+
 ]
 
 #set site id
 SITE_ID = 1
+#set shop name
+OSCAR_SHOP_NAME = "eKShop"
+OSCAR_SHOP_TAGLINE = "The best online shop"
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -98,10 +108,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ecommerce.urls'
 
+import os
+location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', x)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            location('templates'), # templates directory of the project
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -63,3 +63,6 @@ python manage.py runserver
 ```
 By default, the server will run at http://127.0.0.1:8000/.
 
+![Search Results](media/readmeimages/search.png)
+![Product Page](media/readmeimages/product.png)
+![Cart](media/readmeimages/cart.png)
